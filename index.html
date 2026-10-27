@@ -1,0 +1,222 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#f8f8f5">
+<title>Still — A quiet place to write</title>
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+<header class="topbar">
+  <div class="brand">
+    <span class="brand-mark" aria-hidden="true">
+      <svg viewBox="0 0 24 24"><path d="M6 18V6l12 12V6"/></svg>
+    </span>
+    still
+  </div>
+  <span class="top-divider"></span>
+  <span class="doc-label" id="topDocName">Untitled note</span>
+  <div class="top-spacer"></div>
+  <button class="search-trigger" id="searchOpen" aria-label="Search notes">
+    <svg viewBox="0 0 24 24" width="15" height="15" stroke="currentColor"
+      fill="none" stroke-width="1.7"><circle cx="10.8" cy="10.8" r="6.5"/>
+      <path d="m16 16 4 4"/></svg>
+    <span>Search notes</span><kbd>⌘ K</kbd>
+  </button>
+  <span class="save-status" id="saveStatus">Saved locally</span>
+  <div class="top-actions">
+    <button class="icon-btn" id="newNote" aria-label="New note" title="New note">
+      <svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg>
+    </button>
+    <button class="icon-btn" id="pinNote" aria-label="Pin note" title="Pin note">
+      <svg viewBox="0 0 24 24"><path d="m16 3 5 5-4 1-4 4-1 5-3-3-5 5"/>
+        <path d="m8 8 8 8"/></svg>
+    </button>
+    <button class="icon-btn" id="moreOpen" aria-label="More options" title="More options">
+      <svg viewBox="0 0 24 24"><circle cx="5" cy="12" r="1"/>
+        <circle cx="12" cy="12" r="1"/><circle cx="19" cy="12" r="1"/></svg>
+    </button>
+  </div>
+</header>
+
+<main class="layout">
+  <section class="editor-head">
+    <div class="doc-meta">
+      <span class="dot"></span>
+      <span id="dateLabel">A fresh page</span>
+      <span> / </span>
+      <span id="editedLabel">Just for you</span>
+    </div>
+    <textarea class="title-input" id="title" rows="1" maxlength="180"
+      aria-label="Note title" placeholder="Untitled note"></textarea>
+    <div class="subtitle" id="subtitle">A little space to think.</div>
+
+    <nav class="toolbar" aria-label="Text formatting">
+      <select class="tool-select" id="blockFormat" aria-label="Text style">
+        <option value="p">Paragraph</option>
+        <option value="h1">Heading 1</option>
+        <option value="h2">Heading 2</option>
+        <option value="h3">Heading 3</option>
+        <option value="blockquote">Quote</option>
+        <option value="pre">Code block</option>
+      </select>
+      <span class="tool-divider"></span>
+      <button class="icon-btn" data-cmd="bold" aria-label="Bold" title="Bold (⌘B)">
+        <svg viewBox="0 0 24 24"><path d="M6 5h7a4 4 0 0 1 0 8H6z"/>
+          <path d="M6 13h8a4 4 0 0 1 0 8H6z" transform="translate(0 -1)"/></svg>
+      </button>
+      <button class="icon-btn" data-cmd="italic" aria-label="Italic" title="Italic (⌘I)">
+        <svg viewBox="0 0 24 24"><path d="M19 4h-9M14 20H5M15 4 9 20"/></svg>
+      </button>
+      <button class="icon-btn" data-cmd="strikeThrough" aria-label="Strikethrough" title="Strikethrough">
+        <svg viewBox="0 0 24 24"><path d="M7 6c1-2 3-2 5-2 3 0 5 2 5 4M5 12h14M7 17c1 2 3 3 5 3 3 0 5-2 5-4"/></svg>
+      </button>
+      <span class="tool-divider"></span>
+      <button class="icon-btn" id="bulletList" aria-label="Bulleted list" title="Bulleted list">
+        <svg viewBox="0 0 24 24"><path d="M9 6h11M9 12h11M9 18h11"/>
+          <circle cx="4" cy="6" r="1"/><circle cx="4" cy="12" r="1"/>
+          <circle cx="4" cy="18" r="1"/></svg>
+      </button>
+      <button class="icon-btn" id="numberList" aria-label="Numbered list" title="Numbered list">
+        <svg viewBox="0 0 24 24"><path d="M10 6h10M10 12h10M10 18h10"/>
+          <path d="M4 5h1v3M3.5 8H6M3 11h3l-3 3h3M3 17h3l-3 3h3"/></svg>
+      </button>
+      <button class="icon-btn" id="checkList" aria-label="Checklist" title="Insert checklist">
+        <svg viewBox="0 0 24 24"><rect x="3" y="4" width="6" height="6" rx="1"/>
+          <path d="m4.5 7 1.5 1.5L9 5M12 7h9M3 15h6v6H3zM12 18h9"/></svg>
+      </button>
+      <span class="tool-divider"></span>
+      <button class="icon-btn" id="linkBtn" aria-label="Insert link" title="Insert link">
+        <svg viewBox="0 0 24 24"><path d="M10 13a5 5 0 0 0 7 .2l3-3a5 5 0 0 0-7-7l-2 2"/>
+          <path d="M14 11a5 5 0 0 0-7-.2l-3 3a5 5 0 0 0 7 7l2-2"/></svg>
+      </button>
+      <button class="icon-btn" id="quoteBtn" aria-label="Quote" title="Quote">
+        <svg viewBox="0 0 24 24"><path d="M4 11h6V5H5a2 2 0 0 0-2 2v5c0 3 2 5 5 5M14 11h6V5h-5a2 2 0 0 0-2 2v5c0 3 2 5 5 5"/></svg>
+      </button>
+      <div class="top-spacer"></div>
+      <button class="icon-btn" id="focusBtn" aria-label="Focus mode" title="Focus mode">
+        <svg viewBox="0 0 24 24"><path d="M8 3H5a2 2 0 0 0-2 2v3M16 3h3a2 2 0 0 1 2 2v3M3 16v3a2 2 0 0 0 2 2h3M21 16v3a2 2 0 0 1-2 2h-3"/></svg>
+      </button>
+    </nav>
+  </section>
+
+  <section class="editor-wrap">
+    <div class="editor" id="editor" contenteditable="true" role="textbox"
+      aria-label="Note contents" aria-multiline="true"
+      data-placeholder="Start writing, or type / for commands…"
+      spellcheck="true"></div>
+  </section>
+
+  <footer class="bottom-bar">
+    <span id="wordCount">0 words</span>
+    <span id="charCount">0 characters</span>
+    <span id="readTime">1 min read</span>
+    <span class="bottom-spacer"></span>
+    <button class="icon-btn" id="settingsOpen" aria-label="Editor settings" title="Editor settings">
+      <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/>
+        <path d="m19 13 2 1-2 4-2-1-2 1v2H9v-2l-2-1-2 1-2-4 2-1v-2l-2-1 2-4 2 1 2-1V4h6v2l2 1 2-1 2 4-2 1z"/></svg>
+    </button>
+    <button class="icon-btn" id="exportBtn" aria-label="Export note" title="Export note">
+      <svg viewBox="0 0 24 24"><path d="M12 3v12m-5-5 5 5 5-5M4 17v4h16v-4"/></svg>
+    </button>
+    <span class="bottom-action" title="Your notes are stored in this browser">
+      <svg viewBox="0 0 24 24"><rect x="5" y="10" width="14" height="11" rx="2"/>
+        <path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg>
+      Stored on this device
+    </span>
+  </footer>
+</main>
+
+<div class="menu" id="moreMenu" hidden>
+  <button data-action="search">Search notes <kbd>⌘ K</kbd></button>
+  <button data-action="new">New note <kbd>⌘ N</kbd></button>
+  <button data-action="duplicate">Duplicate note</button>
+  <button data-action="rename">Rename note</button>
+  <div class="menu-sep"></div>
+  <button data-action="export">Export document</button>
+  <button data-action="import">Import .txt / .md</button>
+  <button data-action="print">Print / save as PDF</button>
+  <div class="menu-sep"></div>
+  <button data-action="theme">Toggle dark mode</button>
+  <button data-action="settings">Editor settings</button>
+  <button data-action="delete">Delete this note</button>
+</div>
+
+<div class="menu" id="slashMenu" hidden>
+  <div class="menu-heading">Insert something</div>
+  <button data-insert="p">Paragraph</button>
+  <button data-insert="h1">Heading 1</button>
+  <button data-insert="h2">Heading 2</button>
+  <button data-insert="ul">Bulleted list</button>
+  <button data-insert="ol">Numbered list</button>
+  <button data-insert="check">Checklist</button>
+  <button data-insert="quote">Quote</button>
+  <button data-insert="hr">Divider</button>
+  <button data-insert="code">Code block</button>
+</div>
+
+<div class="overlay" id="searchOverlay" hidden>
+  <section class="dialog" role="dialog" aria-modal="true" aria-label="Search notes">
+    <div class="dialog-search">
+      <svg viewBox="0 0 24 24"><circle cx="10.8" cy="10.8" r="6.5"/>
+        <path d="m16 16 4 4"/></svg>
+      <input id="searchInput" placeholder="Search all notes…" autocomplete="off">
+      <kbd>ESC</kbd>
+    </div>
+    <div class="dialog-list" id="searchResults"></div>
+    <div class="dialog-foot"><span>Enter to open</span><span>↑ ↓ to navigate</span>
+      <span>Esc to close</span></div>
+  </section>
+</div>
+
+<div class="overlay" id="settingsOverlay" hidden>
+  <section class="dialog" role="dialog" aria-modal="true" aria-label="Editor settings">
+    <div class="settings-row">
+      <div><div class="settings-label">Appearance</div>
+        <div class="settings-sub">Choose a writing environment</div></div>
+      <select id="themeSetting"><option value="light">Light</option>
+        <option value="dark">Dark</option><option value="system">System</option></select>
+    </div>
+    <div class="settings-row">
+      <div><div class="settings-label">Writing width</div>
+        <div class="settings-sub">Room for your thoughts</div></div>
+      <select id="widthSetting"><option value="620">Narrow</option>
+        <option value="720">Comfortable</option><option value="850">Wide</option></select>
+    </div>
+    <div class="settings-row">
+      <div><div class="settings-label">Text size</div>
+        <div class="settings-sub">Adjust the writing canvas</div></div>
+      <select id="sizeSetting"><option value="15">Small</option>
+        <option value="17">Default</option><option value="19">Large</option>
+        <option value="21">Extra large</option></select>
+    </div>
+    <div class="settings-row">
+      <div><div class="settings-label">Show word count</div>
+        <div class="settings-sub">Keep writing statistics visible</div></div>
+      <input class="switch" id="countSetting" type="checkbox" checked>
+    </div>
+    <div class="settings-row">
+      <div><div class="settings-label">Show date under title</div>
+        <div class="settings-sub">Display note creation information</div></div>
+      <input class="switch" id="dateSetting" type="checkbox" checked>
+    </div>
+    <div class="settings-row">
+      <div><div class="settings-label">Focus mode</div>
+        <div class="settings-sub">Keep only the essentials in view</div></div>
+      <input class="switch" id="focusSetting" type="checkbox">
+    </div>
+    <div class="settings-row" style="justify-content:flex-end">
+      <button class="icon-btn" id="settingsClose" style="width:auto;padding:0 12px">Done</button>
+    </div>
+  </section>
+</div>
+
+<input id="fileInput" type="file" accept=".txt,.md,.markdown,text/plain,text/markdown"
+  hidden>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script src="app.js"></script>
+</body>
+</html>
